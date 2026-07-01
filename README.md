@@ -11,7 +11,7 @@ Developer assignment submission for Namoza — client: OrthoNow, a chain of 9 or
 | Task | Description | Status |
 |---|---|---|
 | Task 1 | GTM event schema, booking funnel drop-off tracking, Google Ads conversion recommendation | Complete — see `task-1/` |
-| Task 2 | Single-file consultation landing page with a `consultation_form_submitted` dataLayer push | Complete — see `task-2/index.html`. PageSpeed screenshot still pending (needs a public URL to test against) |
+| Task 2 | Single-file consultation landing page with a `consultation_form_submitted` dataLayer push | Complete — see `task-2/index.html`. Scores 100/100/100/100 in local Lighthouse; the official PageSpeed Insights screenshot still needs a public URL |
 | Task 3 | HubSpot/WhatsApp/Google Ads integration design (written, 300–400 words) | Complete — see `task-3/integration-design.md` |
 
 ## Repository Structure
@@ -38,12 +38,7 @@ namoza-developer-assignment/
 │
 ├── task-2/
 │   ├── index.html              # THE SUBMISSION — single self-contained file, no external assets
-│   ├── pagespeed/               # PageSpeed Insights screenshot goes here
-│   └── extended-demo/           # A broader multi-page OrthoNow site built during exploration -
-│       ├── index.html           # not the graded artifact, kept for reference
-│       ├── css/style.css
-│       ├── js/script.js
-│       └── assets/
+│   └── pagespeed/               # PageSpeed Insights screenshot goes here
 │
 ├── task-3/
 │   └── integration-design.md   # Written answer, 300–400 words
@@ -72,13 +67,13 @@ To check the dataLayer push live: open the browser console, fill in the form, su
 
 - **task-1/** — the full GTM/GA4 event schema, funnel design, and Google Ads recommendation
 - **task-2/index.html** — the actual graded landing page: single file, 2-field form, one trust element, one CTA
-- **task-2/extended-demo/** — a larger, multi-section OrthoNow site (booking modal, dark theme, full page) built while exploring the problem before the exact brief was confirmed. Left in the repo as supporting work, not the submission.
 - **task-3/** — the CRM integration design, answered directly against the brief's three questions
 
 ## Remaining Before Final Submission
 
-- [ ] Host `task-2/index.html` somewhere public (GitHub Pages is fastest) and run PageSpeed Insights Mobile against it — target 90+, screenshot into `task-2/pagespeed/`
-- [ ] Open the page in a real browser and confirm `consultation_form_submitted` fires in `window.dataLayer` on submit, not on load
+- [x] Confirm `consultation_form_submitted` fires in `window.dataLayer` on submit, not on load — verified in browser console
+- [x] Local Lighthouse Mobile check — 100/100/100/100
+- [ ] Host `task-2/index.html` somewhere public (GitHub Pages is fastest) and run the official PageSpeed Insights Mobile against it — screenshot into `task-2/pagespeed/`
 - [ ] Record the Loom (max 8 min): GTM schema decisions (2 min) → live dataLayer demo in console (3 min) → integration architecture answer (3 min)
 - [ ] Commit and push this repository, share access with himanshu@namoza.com
 - [ ] Email the repo link + Loom link to naman@namoza.com — subject: "Developer Assignment - [Your Name]"
