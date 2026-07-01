@@ -18,9 +18,9 @@ Covers every interaction listed in the brief: the 3-step booking form, Call Now 
 | `guide_lead_submitted` | Custom Event, fires on successful submission of the name+phone gate form (not on click) | `page_type`, `page_path`, `button_location` | Conversion report (secondary); "warm content lead" audience |
 | `guide_download` | Link Click (static PDF, stable URL — no frontend logic needed) | `page_type`, `link_destination`, `button_location` | Content report; engagement only, not a conversion |
 | `book_appointment_click` | Custom Event (frontend push) | `button_location`, `link_destination`, `page_type` | Funnel Exploration entry step; Landing Page report for CTA placement |
-| `booking_started` | Custom Event, fires when the booking form actually renders | `page_type`, `page_path` | Funnel Exploration — isolates "opened the form" from "clicked but nothing loaded" |
+| `booking_started` | Custom Event, fires when the booking form actually renders | `page_type`, `page_path`, `button_location` | Funnel Exploration — isolates "opened the form" from "clicked but nothing loaded" |
 | `booking_step_completed` | Custom Event, fires per step advance, differentiated by `step_number` | `step_number`, `step_name`, `clinic_id` | Funnel Exploration steps 1–3 (via `step_number` condition); Engagement report for drop-off |
-| `booking_completed` | Custom Event, fires only after backend confirms success | `clinic_id`, `specialty` | Conversion report (primary key event); Google Ads primary conversion — see `google-ads-conversion.md` |
+| `booking_completed` | Custom Event, fires only after backend confirms success | `clinic_id`, `specialty`, `page_type` | Conversion report (primary key event); Google Ads primary conversion — see `google-ads-conversion.md` |
 | `booking_failed` | Custom Event, fires on validation or server error | `step_number`, `error_type`, `validation_field` | Technical Exploration filtered by `error_type` — not a business report |
 | `content_scroll` | GTM native Scroll Depth Trigger (25/50/75/90%) — **not a manual dataLayer push** | `page_type`, `page_path`, `scroll_depth` | Engagement report; "read [topic]" audience for condition-specific retargeting |
 
