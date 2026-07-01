@@ -3,33 +3,574 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Namoza Healthcare | Book an Appointment</title>
+  <title>OrthoNow | Orthopaedic Clinics</title>
+
+  <!--
+    Sets the theme before the page paints, so there's no flash of the
+    wrong theme. This has to run synchronously here, in <head> - the
+    main script.js loads with `defer`, which runs too late for this.
+  -->
+  <script>
+    (function () {
+      var stored;
+      try {
+        stored = localStorage.getItem('theme');
+      } catch (e) {
+        stored = null;
+      }
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Header -->
   <header class="site-header">
-    <!-- logo + nav will go here -->
+    <div class="container header-inner">
+      <a class="logo" href="#">
+        <img src="assets/images/logo.svg" alt="OrthoNow" width="140" height="32" />
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav-list"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+
+        <ul id="primary-nav-list" class="primary-nav-list">
+          <li><a href="#services-heading">Services</a></li>
+          <li><a href="#locations-heading">Locations</a></li>
+          <li><a href="#faq-heading">FAQ</a></li>
+          <li><a href="#contact-heading">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          class="btn btn-secondary btn-icon theme-toggle"
+          type="button"
+          aria-label="Toggle dark theme"
+          aria-pressed="false"
+          data-theme-toggle
+        >
+          <img class="theme-toggle-icon theme-toggle-icon-light" src="assets/icons/sun.svg" alt="" width="20" height="20" />
+          <img class="theme-toggle-icon theme-toggle-icon-dark" src="assets/icons/moon.svg" alt="" width="20" height="20" />
+        </button>
+        <a class="btn btn-secondary btn-icon" href="tel:+911234567890" aria-label="Call OrthoNow">
+          <img src="assets/icons/phone.svg" alt="" width="20" height="20" />
+        </a>
+        <button class="btn btn-primary" type="button" data-open-booking>
+          Book Appointment
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <!-- hero heading, subtext, and CTA button will go here -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1 id="hero-heading">Expert Orthopaedic Care, Close to Home</h1>
+          <p class="hero-text">
+            From sports injuries to joint pain, OrthoNow's specialists help you
+            move without pain again. Book online in minutes or call your
+            nearest clinic today.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-large" type="button" data-open-booking>
+              Book Appointment
+            </button>
+            <a class="btn btn-secondary btn-large" href="tel:+911234567890">
+              Call Now
+            </a>
+          </div>
+
+          <p class="hero-trust-badge">
+            <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+            4.8 out of 5 on Google Reviews
+          </p>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="assets/images/hero-doctor.webp"
+            alt="Orthopaedic specialist examining a patient's knee at an OrthoNow clinic"
+            width="560"
+            height="480"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
     </section>
 
-    <section class="services">
-      <!-- list of services / booking options will go here -->
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us" aria-labelledby="why-choose-us-heading">
+      <div class="container">
+        <h2 id="why-choose-us-heading">Why Patients Choose OrthoNow</h2>
+
+        <ul class="stat-list">
+          <li class="stat-block">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Years of Orthopaedic Care</span>
+          </li>
+          <li class="stat-block">
+            <span class="stat-number">9</span>
+            <span class="stat-label">Clinics Across the City</span>
+          </li>
+          <li class="stat-block">
+            <span class="stat-number">50,000+</span>
+            <span class="stat-label">Patients Treated</span>
+          </li>
+          <li class="stat-block">
+            <span class="stat-number">Same-Week</span>
+            <span class="stat-label">Appointments Available</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section class="booking-form">
-      <!-- booking form will go here -->
+    <!-- Services Section -->
+    <section class="services" aria-labelledby="services-heading">
+      <div class="container">
+        <h2 id="services-heading">Conditions &amp; Specialties We Treat</h2>
+        <p class="section-intro">
+          Whatever the injury or joint concern, there's a specialist for it at
+          OrthoNow.
+        </p>
+
+        <ul class="service-card-list">
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/knee.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Knee &amp; Joint Care</h3>
+            <p class="service-card-text">
+              Diagnosis and treatment for knee pain, arthritis, and joint injuries.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="orthopaedic_knee">
+              Book for this specialty
+            </a>
+          </li>
+
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/sports-injury.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Sports Injuries</h3>
+            <p class="service-card-text">
+              Fast assessment and recovery plans for sprains, tears, and overuse injuries.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="sports_injury">
+              Book for this specialty
+            </a>
+          </li>
+
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/spine.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Spine &amp; Back Pain</h3>
+            <p class="service-card-text">
+              Non-surgical and surgical care for chronic back and neck pain.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="spine">
+              Book for this specialty
+            </a>
+          </li>
+
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/shoulder.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Shoulder &amp; Elbow</h3>
+            <p class="service-card-text">
+              Treatment for rotator cuff injuries, tennis elbow, and joint stiffness.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="shoulder_elbow">
+              Book for this specialty
+            </a>
+          </li>
+
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/fracture.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Fracture &amp; Trauma Care</h3>
+            <p class="service-card-text">
+              Urgent care for fractures, dislocations, and accident injuries.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="fracture_trauma">
+              Book for this specialty
+            </a>
+          </li>
+
+          <li class="service-card">
+            <img class="service-card-icon" src="assets/icons/physio.svg" alt="" width="32" height="32" />
+            <h3 class="service-card-title">Physiotherapy &amp; Rehabilitation</h3>
+            <p class="service-card-text">
+              Personalised recovery programmes to restore strength and mobility.
+            </p>
+            <a class="service-card-link" href="#" data-open-booking data-specialty="physiotherapy">
+              Book for this specialty
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
+
+    <!-- Doctors / Team Section -->
+    <section class="team" aria-labelledby="doctors-heading">
+      <div class="container team-inner">
+        <div class="team-content">
+          <h2 id="doctors-heading">Care From Experienced Specialists</h2>
+          <p>
+            Our clinical team includes board-certified orthopaedic surgeons,
+            sports medicine specialists, and registered physiotherapists, with
+            a combined 100+ years of experience treating joint, sports, and
+            spine conditions.
+          </p>
+
+          <ul class="credential-list">
+            <li>Board-Certified Orthopaedic Surgeons</li>
+            <li>Certified Sports Medicine Specialists</li>
+            <li>Registered Physiotherapists</li>
+          </ul>
+        </div>
+
+        <div class="team-media">
+          <img
+            src="assets/images/clinical-team.webp"
+            alt="OrthoNow's clinical team of orthopaedic surgeons and physiotherapists"
+            width="480"
+            height="360"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinic Locations Section -->
+    <section class="locations" aria-labelledby="locations-heading">
+      <div class="container">
+        <h2 id="locations-heading">Find a Clinic Near You</h2>
+        <p class="section-intro">
+          OrthoNow has 9 clinics across the city. Here are three of our most
+          visited locations.
+        </p>
+
+        <ul class="clinic-card-list">
+          <li>
+            <article class="clinic-card">
+              <h3 class="clinic-card-title">OrthoNow Indiranagar</h3>
+              <address class="clinic-card-address">
+                12th Main Road, Indiranagar, Bengaluru 560038
+              </address>
+              <p class="clinic-card-hours">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</p>
+              <button
+                class="btn btn-outline"
+                type="button"
+                data-open-booking
+                data-clinic-id="blr_indiranagar"
+                aria-label="Book at OrthoNow Indiranagar"
+              >
+                Book at this location
+              </button>
+            </article>
+          </li>
+
+          <li>
+            <article class="clinic-card">
+              <h3 class="clinic-card-title">OrthoNow Koramangala</h3>
+              <address class="clinic-card-address">
+                80 Feet Road, Koramangala, Bengaluru 560095
+              </address>
+              <p class="clinic-card-hours">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</p>
+              <button
+                class="btn btn-outline"
+                type="button"
+                data-open-booking
+                data-clinic-id="blr_koramangala"
+                aria-label="Book at OrthoNow Koramangala"
+              >
+                Book at this location
+              </button>
+            </article>
+          </li>
+
+          <li>
+            <article class="clinic-card">
+              <h3 class="clinic-card-title">OrthoNow Whitefield</h3>
+              <address class="clinic-card-address">
+                ITPL Main Road, Whitefield, Bengaluru 560066
+              </address>
+              <p class="clinic-card-hours">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</p>
+              <button
+                class="btn btn-outline"
+                type="button"
+                data-open-booking
+                data-clinic-id="blr_whitefield"
+                aria-label="Book at OrthoNow Whitefield"
+              >
+                Book at this location
+              </button>
+            </article>
+          </li>
+        </ul>
+
+        <p class="locations-view-all">
+          <a href="#">View all 9 clinic locations</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Trust Signals Section -->
+    <section class="trust-signals" aria-labelledby="trust-heading">
+      <div class="container">
+        <h2 id="trust-heading">Trusted by Patients Across the City</h2>
+
+        <ul class="trust-badge-list">
+          <li class="trust-badge">
+            <img src="assets/icons/google-reviews.svg" alt="" width="28" height="28" />
+            <span>4.8&#9733; on Google Reviews (2,300+ reviews)</span>
+          </li>
+          <li class="trust-badge">
+            <img src="assets/icons/certified.svg" alt="" width="28" height="28" />
+            <span>NABH Accredited Clinics</span>
+          </li>
+          <li class="trust-badge">
+            <img src="assets/icons/iso.svg" alt="" width="28" height="28" />
+            <span>ISO 9001 Certified Facilities</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Booking CTA Banner -->
+    <section class="booking-cta" aria-labelledby="booking-cta-heading">
+      <div class="container">
+        <h2 id="booking-cta-heading">Ready to Feel Better?</h2>
+        <p>
+          Booking takes less than 2 minutes. Choose your clinic, pick a time,
+          and we'll take care of the rest.
+        </p>
+
+        <div class="booking-cta-actions">
+          <button class="btn btn-primary btn-large" type="button" data-open-booking>
+            Book Appointment
+          </button>
+          <a class="btn btn-secondary btn-large" href="tel:+911234567890">
+            Call Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Do I need a referral to book an appointment?</summary>
+            <p>
+              No referral is required. You can book directly with any
+              OrthoNow specialist online or by phone.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you accept health insurance?</summary>
+            <p>
+              We accept most major health insurance providers. Call your
+              nearest clinic to confirm coverage before your visit.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is parking available at your clinics?</summary>
+            <p>
+              Yes, all OrthoNow clinics offer on-site or nearby patient parking.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What should I bring to my first appointment?</summary>
+            <p>
+              Please bring a valid ID, any previous scans or reports, and a
+              list of current medications.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I get a same-day appointment for a sports injury?</summary>
+            <p>
+              Same-week appointments are available at all clinics, and several
+              locations offer same-day slots for urgent injuries. Call ahead
+              to check availability.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" aria-labelledby="contact-heading">
+      <div class="container contact-inner">
+        <h2 id="contact-heading">Get in Touch</h2>
+        <p>However you'd like to reach us, we're here to help.</p>
+
+        <div class="contact-actions">
+          <a class="btn btn-secondary" href="tel:+911234567890">
+            Call Us
+          </a>
+          <a class="btn btn-secondary" href="https://wa.me/911234567890" target="_blank" rel="noopener">
+            WhatsApp Us
+          </a>
+        </div>
+
+        <address class="contact-address">
+          OrthoNow Head Office, 12th Main Road, Indiranagar, Bengaluru 560038
+        </address>
+        <p class="contact-hours">Mon&ndash;Sat, 9:00 AM &ndash; 7:00 PM</p>
+      </div>
+    </section>
+
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
-    <!-- footer content will go here -->
+    <div class="container footer-inner">
+      <a class="logo" href="#">
+        <img src="assets/images/logo.svg" alt="OrthoNow" width="120" height="28" />
+      </a>
+
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#services-heading">Services</a></li>
+          <li><a href="#locations-heading">Locations</a></li>
+          <li><a href="#faq-heading">FAQ</a></li>
+          <li><a href="#contact-heading">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social-links">
+        <li>
+          <a href="#" aria-label="OrthoNow on Instagram">
+            <img src="assets/icons/instagram.svg" alt="" width="20" height="20" />
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="OrthoNow on Facebook">
+            <img src="assets/icons/facebook.svg" alt="" width="20" height="20" />
+          </a>
+        </li>
+      </ul>
+
+      <small class="copyright">&copy; 2026 OrthoNow. All rights reserved.</small>
+    </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- Booking Modal -->
+  <dialog id="booking-modal" aria-labelledby="booking-modal-heading">
+    <button class="dialog-close" type="button" data-close-booking aria-label="Close booking form">
+      &times;
+    </button>
+
+    <h2 id="booking-modal-heading">Book an Appointment</h2>
+
+    <form id="booking-form" novalidate>
+
+      <div class="form-step" data-step="1">
+        <h3>Step 1: Choose Clinic &amp; Specialty</h3>
+
+        <label for="clinic-select">Clinic</label>
+        <select id="clinic-select" name="clinic_id" required>
+          <option value="">Select a clinic</option>
+          <option value="blr_indiranagar">OrthoNow Indiranagar</option>
+          <option value="blr_koramangala">OrthoNow Koramangala</option>
+          <option value="blr_whitefield">OrthoNow Whitefield</option>
+        </select>
+
+        <label for="specialty-select">Specialty</label>
+        <select id="specialty-select" name="specialty" required>
+          <option value="">Select a specialty</option>
+          <option value="orthopaedic_knee">Knee &amp; Joint Care</option>
+          <option value="sports_injury">Sports Injuries</option>
+          <option value="spine">Spine &amp; Back Pain</option>
+          <option value="shoulder_elbow">Shoulder &amp; Elbow</option>
+          <option value="fracture_trauma">Fracture &amp; Trauma Care</option>
+          <option value="physiotherapy">Physiotherapy &amp; Rehabilitation</option>
+        </select>
+
+        <div class="form-step-actions">
+          <button class="btn btn-primary" type="button" data-step-next>Next</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="2" hidden>
+        <h3>Step 2: Your Details</h3>
+
+        <label for="patient-name">Full Name</label>
+        <input id="patient-name" name="name" type="text" autocomplete="name" required />
+
+        <label for="patient-phone">Phone Number</label>
+        <input
+          id="patient-phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          required
+          aria-describedby="phone-error"
+        />
+        <p id="phone-error" class="form-error" role="alert"></p>
+
+        <label for="preferred-date">Preferred Date</label>
+        <input id="preferred-date" name="preferred_date" type="date" required />
+
+        <div class="form-step-actions">
+          <button class="btn btn-outline" type="button" data-step-back>Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Next</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="3" hidden>
+        <h3>Step 3: Review &amp; Confirm</h3>
+
+        <dl class="booking-summary">
+          <div>
+            <dt>Clinic</dt>
+            <dd data-summary="clinic"></dd>
+          </div>
+          <div>
+            <dt>Specialty</dt>
+            <dd data-summary="specialty"></dd>
+          </div>
+          <div>
+            <dt>Name</dt>
+            <dd data-summary="name"></dd>
+          </div>
+          <div>
+            <dt>Preferred Date</dt>
+            <dd data-summary="date"></dd>
+          </div>
+        </dl>
+
+        <div class="form-step-actions">
+          <button class="btn btn-outline" type="button" data-step-back>Back</button>
+          <button class="btn btn-primary" type="submit">Confirm Booking</button>
+        </div>
+      </div>
+
+    </form>
+  </dialog>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>
