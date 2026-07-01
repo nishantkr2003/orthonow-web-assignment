@@ -1,4 +1,16 @@
+# OS files
 .DS_Store
 Thumbs.db
+
+# Editor
 .vscode/settings.json
+.idea/
+
+# Dependencies (in case tooling gets added later)
 node_modules/
+
+# Logs
+*.log
+
+# Env files
+.env
