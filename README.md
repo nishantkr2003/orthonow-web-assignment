@@ -1,26 +1,18 @@
 # Namoza Developer Assignment
 
-Developer assignment submission for Namoza, covering analytics event tracking design, a healthcare landing page, and a CRM integration design.
+Developer assignment submission for Namoza — client: OrthoNow, a chain of 9 orthopaedic clinics across Bengaluru, Hyderabad, and Chennai. Three deliverables: a GTM event schema, a consultation landing page, and a CRM integration design.
 
 ## Candidate
 
 - Name: Nishant Kumar
 
-## Project Overview
-
-This repository holds three related pieces of work built around a healthcare booking flow:
-
-1. A Google Tag Manager / GA4 event schema for tracking the booking funnel
-2. A responsive healthcare landing page with a booking form, optimized for performance
-3. A design for integrating booking form submissions with a CRM
-
 ## Assignment Overview
 
-| Task | Description |
-|---|---|
-| Task 1 | Google Tag Manager event schema and GA4 funnel design |
-| Task 2 | Healthcare landing page (HTML/CSS/JS) with PageSpeed optimization |
-| Task 3 | CRM integration design for booking form submissions |
+| Task | Description | Status |
+|---|---|---|
+| Task 1 | GTM event schema, booking funnel drop-off tracking, Google Ads conversion recommendation | Complete — see `task-1/` |
+| Task 2 | Single-file consultation landing page with a `consultation_form_submitted` dataLayer push | Complete — see `task-2/index.html`. PageSpeed screenshot still pending (needs a public URL to test against) |
+| Task 3 | HubSpot/WhatsApp/Google Ads integration design (written, 300–400 words) | Complete — see `task-3/integration-design.md` |
 
 ## Repository Structure
 
@@ -31,71 +23,62 @@ namoza-developer-assignment/
 ├── .gitignore
 ├── LICENSE
 │
-├── docs/                  # Short overview of each task
+├── docs/                       # Short overview of each task
 │   ├── task-1.md
 │   ├── task-2.md
 │   └── task-3.md
 │
-├── task-1/                # GTM event schema
+├── task-1/                     # GTM event schema
 │   ├── README.md
-│   ├── event-schema.md
-│   ├── booking-funnel.md
-│   ├── datalayer-json.md
-│   ├── ga4-funnel.md
-│   └── assets/
+│   ├── event-schema.md         # Event Name / Trigger Type / Key Parameters / GA4 Report
+│   ├── booking-funnel.md       # Which event fires at each booking step, and why
+│   ├── datalayer-json.md       # Actual dataLayer.push() JSON for every booking step
+│   ├── ga4-funnel.md           # GA4 Funnel Exploration configuration
+│   └── google-ads-conversion.md
 │
-├── task-2/                # Healthcare landing page
-│   ├── index.html
-│   ├── css/style.css
-│   ├── js/script.js
-│   ├── assets/
-│   └── pagespeed/         # PageSpeed reports/screenshots
+├── task-2/
+│   ├── index.html              # THE SUBMISSION — single self-contained file, no external assets
+│   ├── pagespeed/               # PageSpeed Insights screenshot goes here
+│   └── extended-demo/           # A broader multi-page OrthoNow site built during exploration -
+│       ├── index.html           # not the graded artifact, kept for reference
+│       ├── css/style.css
+│       ├── js/script.js
+│       └── assets/
 │
-├── task-3/                # CRM integration design
-│   └── integration-design.md
+├── task-3/
+│   └── integration-design.md   # Written answer, 300–400 words
 │
-└── screenshots/           # General screenshots for the submission
+└── screenshots/                 # PageSpeed + browser console screenshots for the Loom/submission
 ```
 
 ## Tech Stack
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Google Tag Manager
-- Google Analytics 4
-- Markdown (for documentation)
-
-No frameworks or build tools are used — everything is plain HTML/CSS/JS by design.
+- HTML5, CSS3, Vanilla JavaScript — no frameworks, no build tools
+- Google Tag Manager, Google Analytics 4, Google Ads (design only — no live account exists for this exercise)
 
 ## How to Run
 
-Task 2 is a static site, so no build step is required.
+**Task 2 (the graded submission)** is one file with everything inline — open `task-2/index.html` directly in a browser, no server required.
 
-1. Clone the repository
-2. Open `task-2/index.html` directly in a browser, or serve it locally, for example:
-   ```bash
-   npx serve task-2
-   ```
+```
+task-2/index.html
+```
 
-The documentation in `task-1/` and `task-3/` is plain Markdown and can be read directly on GitHub.
+To check the dataLayer push live: open the browser console, fill in the form, submit, then run `window.dataLayer` — the `consultation_form_submitted` event should be the last entry.
+
+**Task 1 and Task 3** are Markdown, readable directly on GitHub.
 
 ## Folder Explanation
 
-- **docs/** — one short overview file per task, linking out to the full details
-- **task-1/** — all GTM/GA4 event tracking documentation
-- **task-2/** — the actual landing page code (HTML, CSS, JS) and PageSpeed results
-- **task-3/** — write-up of how the booking form connects to a CRM
-- **screenshots/** — supporting screenshots referenced across the docs
+- **task-1/** — the full GTM/GA4 event schema, funnel design, and Google Ads recommendation
+- **task-2/index.html** — the actual graded landing page: single file, 2-field form, one trust element, one CTA
+- **task-2/extended-demo/** — a larger, multi-section OrthoNow site (booking modal, dark theme, full page) built while exploring the problem before the exact brief was confirmed. Left in the repo as supporting work, not the submission.
+- **task-3/** — the CRM integration design, answered directly against the brief's three questions
 
-## Future Development Plan
+## Remaining Before Final Submission
 
-- [ ] Finalize GTM event schema
-- [ ] Design booking funnel in detail
-- [ ] Add sample dataLayer JSON for every event
-- [ ] Build out the landing page markup and styling
-- [ ] Wire up the booking form with JavaScript
-- [ ] Optimize the landing page for mobile performance
-- [ ] Capture PageSpeed Insights screenshot
-- [ ] Write the CRM integration design
-- [ ] Record a Loom walkthrough of the submission
+- [ ] Host `task-2/index.html` somewhere public (GitHub Pages is fastest) and run PageSpeed Insights Mobile against it — target 90+, screenshot into `task-2/pagespeed/`
+- [ ] Open the page in a real browser and confirm `consultation_form_submitted` fires in `window.dataLayer` on submit, not on load
+- [ ] Record the Loom (max 8 min): GTM schema decisions (2 min) → live dataLayer demo in console (3 min) → integration architecture answer (3 min)
+- [ ] Commit and push this repository, share access with himanshu@namoza.com
+- [ ] Email the repo link + Loom link to naman@namoza.com — subject: "Developer Assignment - [Your Name]"
