@@ -11,7 +11,7 @@ Developer assignment submission for Namoza — client: OrthoNow, a chain of 9 or
 | Task | Description | Status |
 |---|---|---|
 | Task 1 | GTM event schema, booking funnel drop-off tracking, Google Ads conversion recommendation | Complete — see `task-1/` |
-| Task 2 | Single-file consultation landing page with a `consultation_form_submitted` dataLayer push | Complete — see `task-2/index.html`. Scores 100/100/100/100 in local Lighthouse; the official PageSpeed Insights screenshot still needs a public URL |
+| Task 2 | Single-file consultation landing page with a `consultation_form_submitted` dataLayer push | Complete — see `task-2/index.html`. Live at [nishantkr2003.github.io/orthonow-web-assignment/task-2/index.html](https://nishantkr2003.github.io/orthonow-web-assignment/task-2/index.html), scores 100/100/100/100 on the official PageSpeed Insights Mobile test |
 | Task 3 | HubSpot/WhatsApp/Google Ads integration design (written, 300–400 words) | Complete — see `task-3/integration-design.md` |
 
 ## Repository Structure
@@ -73,7 +73,7 @@ To check the dataLayer push live: open the browser console, fill in the form, su
 
 - [x] Confirm `consultation_form_submitted` fires in `window.dataLayer` on submit, not on load — verified in browser console
 - [x] Local Lighthouse Mobile check — 100/100/100/100
-- [ ] Host `task-2/index.html` somewhere public (GitHub Pages is fastest) and run the official PageSpeed Insights Mobile against it — screenshot into `task-2/pagespeed/`
+- [x] Hosted on GitHub Pages, official PageSpeed Insights Mobile run — 100/100/100/100, screenshot saved to `task-2/pagespeed/`
 - [ ] Record the Loom (max 8 min): GTM schema decisions (2 min) → live dataLayer demo in console (3 min) → integration architecture answer (3 min)
 - [ ] Commit and push this repository, share access with himanshu@namoza.com
 - [ ] Email the repo link + Loom link to naman@namoza.com — subject: "Developer Assignment - [Your Name]"
