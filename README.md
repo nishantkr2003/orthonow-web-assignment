@@ -37,13 +37,13 @@ namoza-developer-assignment/
 │   └── google-ads-conversion.md
 │
 ├── task-2/
-│   ├── index.html              # THE SUBMISSION — single self-contained file, no external assets
-│   └── pagespeed/               # PageSpeed Insights screenshot goes here
+│   └── index.html              # THE SUBMISSION — single self-contained file, no external assets
 │
 ├── task-3/
 │   └── integration-design.md   # Written answer, 300–400 words
 │
 └── screenshots/                 # PageSpeed + browser console screenshots for the Loom/submission
+    └── pagespeed-mobile-100.png
 ```
 
 ## Tech Stack
@@ -69,11 +69,3 @@ To check the dataLayer push live: open the browser console, fill in the form, su
 - **task-2/index.html** — the actual graded landing page: single file, 2-field form, one trust element, one CTA
 - **task-3/** — the CRM integration design, answered directly against the brief's three questions
 
-## Remaining Before Final Submission
-
-- [x] Confirm `consultation_form_submitted` fires in `window.dataLayer` on submit, not on load — verified in browser console
-- [x] Local Lighthouse Mobile check — 100/100/100/100
-- [x] Hosted on GitHub Pages, official PageSpeed Insights Mobile run — 100/100/100/100, screenshot saved to `task-2/pagespeed/`
-- [ ] Record the Loom (max 8 min): GTM schema decisions (2 min) → live dataLayer demo in console (3 min) → integration architecture answer (3 min)
-- [ ] Commit and push this repository, share access with himanshu@namoza.com
-- [ ] Email the repo link + Loom link to naman@namoza.com — subject: "Developer Assignment - [Your Name]"
